@@ -1,3 +1,3 @@
 # Practice-CW
 
-Learning Practice
+Practicing using codewars as a prompt.

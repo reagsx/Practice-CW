@@ -1,3 +1,5 @@
+"""Using enumerate with only pulling the position if capital would have been better """
+
 def capitals(word):
     print (word)
     pos = 0
@@ -8,4 +10,3 @@ def capitals(word):
         pos += 1
     print(l)
 
-capitals('DiLdOzEr')

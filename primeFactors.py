@@ -1,3 +1,9 @@
+""" It currently cannot complete fast enough, I think if the
+prime number section is slowing it down with large numbers
+it causes the whole thing to time out and it does not complete """
+
+
+
 def primeFactors(n):
     results = []
     final = {}
