@@ -1,3 +1,3 @@
 # Practice-CW
 
-Practicing using codewars as a prompt.
+Practicing python to learn how to use correctly.
