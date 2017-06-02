@@ -1,29 +1,36 @@
-def gcd(m, n):
-    while m % n != 0:
-        oldm = m
-        oldn = n
+from fractions import gcd
 
-        m = oldn
-        n = oldm % oldn
-    return n
+# Removed to use built in function
+# def gcd(m, n):
+#    while m % n != 0:
+#        oldm = m
+#        oldn = n
+#        m = oldn
+#        n = oldm % oldn
+#    return n
 
 
 class Fraction:
     def __init__(self, top, bottom):
-        self.num = None
-        self.den = None
+        if not isinstance(top, int):
+            NumError = ValueError(
+                "{} is not a valid choice! Use an integer silly goose!", top
+            )
+            raise NumError
+        if not isinstance(bottom, int):
+            NumError = ValueError(
+                "{} is not a valid choice! Use an integer slick willy!", bottom
+            )
+        if top > 0 and bottom > 0:
+            top = abs(top)
+            bottom = abs(bottom)
+        elif bottom < 0:
+            top = - top
+            bottom = abs(bottom)
 
-    def __getNum__(self):
-        if self.num is None:
-            return int(input("Enter numerator:"))
-        else:
-            return self.num
-
-    def __getDen__(self):
-        if self.den is None:
-            return int(input("Enter denominator:"))
-        else:
-            return self.den
+        common = gcd(top, bottom)
+        self.num = top // common
+        self.den = bottom // common
 
     def __str__(self):
         return str(self.num)+"/"+str(self.den)
@@ -36,34 +43,34 @@ class Fraction:
                     self.den*otherfraction.num
         newden = self.den * otherfraction.den
 
-        common = gcd(newnum, newden)
+        # common = gcd(newnum, newden)
 
-        return Fraction(newnum//common, newden//common)
+        return Fraction(newnum, newden)
 
     def __sub__(self, otherfraction):
         newnum = self.num*otherfraction.den - \
                     self.den*otherfraction.num
         newden = self.den * otherfraction.den
 
-        common = gcd(newnum, newden)
+        # common = gcd(newnum, newden)
 
-        return Fraction(newnum // common, newden // common)
+        return Fraction(newnum, newden)
 
     def __mul__(self, otherfraction):
         newnum = self.num * otherfraction.num
         newden = self.den * otherfraction.den
 
-        common = gcd(newnum, newden)
+        # common = gcd(newnum, newden)
 
-        return Fraction(newnum // common, newden // common)
+        return Fraction(newnum, newden)
 
     def __truediv__(self, otherfraction):
         newnum = self.num * otherfraction.den
         newden = self.den * otherfraction.den
 
-        common = gcd(newnum, newden)
+        # common = gcd(newnum, newden)
 
-        return Fraction(newnum // common, newden // common)
+        return Fraction(newnum, newden)
 
     def __eq__(self, other):
         firstnum = self.num * other.den
@@ -80,8 +87,14 @@ class Fraction:
         secondnum = other.num * self.den
         return firstnum > secondnum
 
+    def _getNum(self):
+        return self.num
 
-x = Fraction(1, 2)
+    def getDen(self):
+        return self.den
+
+
+x = Fraction(1, -2)
 y = Fraction(2, 3)
 print(x + y)
 print(x == y)

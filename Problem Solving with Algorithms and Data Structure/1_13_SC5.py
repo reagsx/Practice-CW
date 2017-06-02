@@ -22,13 +22,13 @@ class BinaryGate(LogicGate):
 
     def getPinA(self):
         if self.pinA is None:
-            return int(input("Enter Pin A input for gate "+self.getName()+"-->"))
+            return int(input("Enter Pin A input for gate "+self.getName()+"->"))
         else:
             return self.pinA.getFrom().getOutput()
 
     def getPinB(self):
         if self.pinB is None:
-            return int(input("Enter Pin B input for gate "+self.getName()+"-->"))
+            return int(input("Enter Pin B input for gate "+self.getName()+"->"))
         else:
             return self.pinB.getFrom().getOutput()
 
