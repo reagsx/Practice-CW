@@ -122,6 +122,15 @@ class NorGate(OrGate):
             return 1
 
 
+class XorGate(NorGate):
+
+    def performGateLogic(self):
+        if super().performGateLogic() == 1:
+            return 1
+        else:
+            return 0
+
+
 class Connector:
 
     def __init__(self, fgate, tgate):
@@ -135,6 +144,21 @@ class Connector:
 
     def getTo(self):
         return self.togate
+
+
+def HalfAdder(LC):
+    def __init__(self, name):
+        LC.__init__(self, name)
+        self.A = Connector(self, 'A', 1)
+        self.B = Connector(self, 'B', 1)
+        self.S = Connector(self, 'S')
+        self.C = Connector(self, 'C')
+        self.X1 = XorGate("X1")
+        self.A1 = AndGate("A1")
+        self.A.connect([self.X1.A, self.A1.A])
+        self.B.connect([self.X1.B, self.A1.B])
+        self.X1.C.connect([self.S])
+        self.A1.C.connect([self.C])
 
 
 def main():
