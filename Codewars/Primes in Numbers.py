@@ -1,7 +1,8 @@
 from math import sqrt
+
+
 def primeFactors(n):
     print(n)
-    results = []
     final = {}
     endgame = []
     x = n
