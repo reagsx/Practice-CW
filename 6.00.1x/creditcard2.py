@@ -1,16 +1,20 @@
+# Given Variables
 balance = 3329
 annualInterestRate = .2
-months = 12
+payment = 0
+
+# My Variables
 monthly_interest = annualInterestRate / 12
 payment = 0
 
-b12 = 0
-b11 = b12-x*(1+monthly_interest)
-
-for i in range(0, balance, 10):
-    while :
-        months -= 1
-
-
+# Calculate Here
+while True:
+    end_balance = balance
+    payment += 10
+    for i in range(12):
+        monthly_unpaid = end_balance - payment
+        end_balance = monthly_unpaid + (monthly_interest * monthly_unpaid)
+    if end_balance <= 0:
+        break
 
 print(payment)
