@@ -6,9 +6,6 @@ def is_list_permutation(L1, L2):
             tuple of 3 items in this order:
             the element occurring most, how many times it occurs, and its type
     '''
-    print(sorted(L2, key=lambda e: (isinstance(e, (float, int)), e)) != \
-                sorted(L1, key=lambda e: (isinstance(e, (float, int)), e)))
-
     if (len(L1) != len(L2)) or (
             sorted(L2, key=lambda e: (isinstance(e, (float, int)), e)) !=
             sorted(L1, key=lambda e: (isinstance(e, (float, int)), e))):
