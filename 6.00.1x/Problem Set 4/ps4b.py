@@ -124,32 +124,44 @@ def playGame(wordList):
 
     wordList: list (string)
     """
-    # TO DO... <-- Remove this comment when you code this function
     valid = ['r', 'n', 'e']
     valid2 = ['c', 'u']
     hand = ''
     gameOn = True
     firsthand = True
+
     while gameOn is True:
-        prompt = input('Enter n to deal a new hand, r to replay the last hand, or e to end game: ')
-        if prompt not in valid:
-            print('Invalid Command.')
-        else:
-            if prompt == 'n':
-                firsthand = False
-                hand = dealHand(HAND_SIZE)
-            elif prompt == 'r':
-                if firsthand is True:
-                    print('You have not played a hand yet. Please play a new hand first!')
-            elif prompt == 'e':
-                gameOn = False
-        prompt2 = input('Enter u to have yourself play, c to have the computer play: ')
-        if prompt2 not in valid2:
-            print('Invalid Command.')
-        if prompt2 == 'c':
-            compPlayHand(hand, wordList, HAND_SIZE)
-        else:
-            playHand(hand, wordList, HAND_SIZE)
+        while True:
+            prompt = input('Enter n to deal a new hand, r to replay the last hand, or e to end game: ')
+            if prompt not in valid:
+                print('Invalid Command.')
+                print()
+            else:
+                if prompt == 'n':
+                    firsthand = False
+                    hand = dealHand(HAND_SIZE)
+                    break
+                elif prompt == 'r':
+                    if firsthand is True:
+                        print('You have not played a hand yet. Please play a new hand first!')
+                    else:
+                        break
+                elif prompt == 'e':
+                    gameOn = False
+                    break
+        if gameOn is True:
+            while True:
+                prompt2 = input('Enter u to have yourself play, c to have the computer play: ')
+                if prompt2 not in valid2:
+                    print('Invalid Command.')
+                    print()
+                if prompt2 == 'c':
+                    compPlayHand(hand, wordList, HAND_SIZE)
+                    break
+                elif prompt2 == 'u':
+                    playHand(hand, wordList, HAND_SIZE)
+                    break
+
 
 
 
